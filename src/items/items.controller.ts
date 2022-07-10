@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import type { Item } from './item.module';
+import { CreateItemDto } from './dto/cretate-item.dto';
 
 @Controller('items')
 export class ItemsController {
@@ -27,20 +28,8 @@ export class ItemsController {
 
   // Request body を使用する場合は@bodyと書く
   @Post()
-  create(
-    @Body('id') id: string,
-    @Body('name') name: string,
-    @Body('price') price: number,
-    @Body('description') description: string,
-  ): Item {
-    const item = {
-      id,
-      name,
-      price,
-      description,
-      status: 'ON_SALE',
-    } as const;
-    return this.itemsService.create(item);
+  create(@Body() createItemDto: CreateItemDto): Item {
+    return this.itemsService.create(createItemDto);
   }
 
   @Patch(':id')
