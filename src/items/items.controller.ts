@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import type { Item } from './item.module';
@@ -22,7 +23,7 @@ export class ItemsController {
 
   // pathパラメータを取る場合は@Param
   @Get(':id')
-  findByID(@Param('id') id: string) {
+  findByID(@Param('id', ParseUUIDPipe) id: string) {
     return this.itemsService.findById(id);
   }
 
@@ -33,12 +34,12 @@ export class ItemsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string) {
+  update(@Param('id', ParseUUIDPipe) id: string) {
     return this.itemsService.update(id);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string): void {
+  delete(@Param('id', ParseUUIDPipe) id: string): void {
     this.itemsService.delete(id);
   }
 }
