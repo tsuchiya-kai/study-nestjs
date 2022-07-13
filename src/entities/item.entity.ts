@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 type ItemStatus = ItemModuleType['status'];
 
 @Entity()
-export class Item {
+class Item {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -26,3 +26,5 @@ export class Item {
   @Column()
   updatedAt: string;
 }
+
+export default Item;
