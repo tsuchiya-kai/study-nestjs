@@ -12,7 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'postgres',
       database: 'postgres',
-      autoLoadEntities: true, // 通常エンティティを作成するごとに、それをtypeORMの設定に追加する必要があるが、これをtrueにしておくと自動でやってくれる
+      autoLoadEntities: true,
     }),
   ],
   controllers: [],
